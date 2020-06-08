@@ -1,4 +1,4 @@
 # platform
 platform
 
-requirenments 在backend的文件里。
+requirements 在backend的文件里。
