@@ -1,0 +1,23 @@
+version: '3'
+  
+services:
+  redis:
+    image: redis:4
+    # ports:
+      # - "127.0.0.1:6379:6379"
+    volumes:
+      - ./redis/conf:/usr/local/etc/redis
+      - ./redis/data:/data
+    command:
+      redis-server
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - .:/code
+    ports:
+      - "8081:8080"
+    depends_on:
+      - redis
+    links:
+      - redis
