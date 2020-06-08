@@ -1,0 +1,8 @@
+import pandas as pd
+import numpy as np
+import random
+
+a = map(int, %(feature_line)s.split(','))
+a=[x-1 for x in a]
+dataset = pd.read_csv(%(in_path_文件)s, usecols=a,header=None, sep=',')
+dataset.to_csv(%(out_path_选择列)s, header=None,index=0)

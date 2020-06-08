@@ -1,0 +1,19 @@
+# -*-coding:utf8-*-
+import pandas as pd
+import numpy as np
+from  sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from sklearn.metrics import mean_squared_error, r2_score
+#1.数据获取
+data = pd.read_csv(%(in_path_训练数据)s, header=None, sep=',')
+x=data.iloc[:,:-1]#train_data
+y=data.iloc[:,-1]#train_target
+
+
+
+#3.使用模型训练
+lsvc = KMeans(n_clusters=%(n_clusters)d,init=%(init)s,n_init=%(n_init)d,max_iter=%(max_iter)d,tol=%(tol)f,precompute_distances=%(precompute_distances)s,verbose=%(verbose)d,random_state=%(random_state)s,copy_x=%(copy_x)s,n_jobs=%(n_jobs)s,algorithm=%(algorithm)s).fit_predict(x)                      # 实例化模型
+print(lsvc)
+result=list(lsvc)
+np.savetxt(%(out_path_结果)s,result,fmt='%%f',delimiter=',')

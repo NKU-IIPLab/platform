@@ -1,0 +1,4 @@
+from shutil import copyfile
+
+
+copyfile(%(in_path)s, %(out_path_文件)s)
